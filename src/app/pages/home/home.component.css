@@ -10,7 +10,7 @@ body {
 }
 
 .container__articles {
-  margin: 180px auto 0 auto; /* Ajuste para empurrar o conteúdo abaixo do cabeçalho e do título */
+  margin: 180px auto 100px auto; /* Ajuste para empurrar o conteúdo abaixo do cabeçalho e do título, e adicionar espaço para o rodapé */
   width: 100%; /* Alterado de 100vw para 100% para evitar rolagem horizontal */
   padding: 0;
   background-color: transparent;
