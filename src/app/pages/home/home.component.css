@@ -10,7 +10,7 @@ body {
 }
 
 .container__articles {
-  margin: 130px auto 0 auto; /* Ajuste para diminuir o espaço */
+  margin: 180px auto 0 auto; /* Ajuste para empurrar o conteúdo abaixo do cabeçalho e do título */
   width: 100vw;
   padding: 0;
   background-color: transparent;
@@ -41,7 +41,7 @@ body {
 
 app-menu-title {
   position: absolute;
-  top: 50px; /* Ajuste para empurrar o título para baixo sem sobrepor o conteúdo */
+  top: 35px; /* Ajuste para empurrar o título para baixo sem sobrepor o conteúdo */
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
