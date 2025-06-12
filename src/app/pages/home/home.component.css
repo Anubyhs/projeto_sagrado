@@ -41,7 +41,7 @@ body {
 
 app-menu-title {
   position: absolute;
-  top: 100px; /* Ajuste para empurrar o título abaixo do menu */
+  top: 50px; /* Ajuste para empurrar o título para baixo sem sobrepor o conteúdo */
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
