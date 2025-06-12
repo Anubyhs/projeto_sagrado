@@ -1,18 +1,10 @@
 .container__menu-bar {
   background: transparent;
-  position: relative;
-  z-index: 10;
 }
 
 .container__menu-bar > ul{
   display: flex;
   flex-direction: row;
-}
-
-.container__menu-bar > ul > li > a {
-  display: block;
-  padding: 5px 10px;
-  pointer-events: auto;
 }
 
 .container__menu-bar > ul > li{
