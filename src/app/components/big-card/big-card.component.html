@@ -1,0 +1,42 @@
+<div class="container__big-card">
+
+  <div class="big-card__photo">
+    <ng-container *ngIf="!videoSrc; else videoPlayer">
+      <img
+        src="{{ photoCover }}"
+        alt=""
+        height="200px"
+        srcset=""
+      >
+    </ng-container>
+    <ng-template #videoPlayer>
+      <iframe
+        [src]="videoSrc | safeUrl"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </ng-template>
+  </div>
+
+  <div class="big-card__title">
+    <h1><a [routerLink]="['content', Id]">{{ cardTitle }}</a></h1>
+  </div>
+
+  <div class="big-card__description">
+    <p>
+      <ng-container *ngIf="instagramLink; else defaultDescription">
+        <a [href]="instagramLink" target="_blank" class="instagram-link">
+          <i class="fa-brands fa-instagram"></i> Ver Postagem no Instagram
+        </a>
+      </ng-container>
+      <ng-template #defaultDescription>
+        <a [routerLink]="['content', Id]">
+            {{ cardDescription }}
+        </a>
+      </ng-template>
+    </p>
+  </div>
+
+</div>
