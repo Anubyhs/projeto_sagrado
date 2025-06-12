@@ -37,13 +37,12 @@
 }
 
 .small-card__text-content {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
-  width: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 5px;
 }
 
 .small-card__title {
