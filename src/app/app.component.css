@@ -10,10 +10,11 @@ header {
 
 app-root {
   display: block;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   background-color: transparent;
   height: 100vh;
   position: relative;
   z-index: 1002;
+  max-width: 1200px;
 }
