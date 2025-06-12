@@ -17,7 +17,6 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    AppComponent,
     MenuBarComponent,
     MenuTitleComponent,
     BigCardComponent,
