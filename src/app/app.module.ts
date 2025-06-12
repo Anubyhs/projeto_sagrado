@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,9 +12,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContentComponent } from './pages/content/content.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
-
 @NgModule({
-  declarations: [
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
     AppComponent,
     MenuBarComponent,
     MenuTitleComponent,
@@ -22,10 +25,6 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     HomeComponent,
     ContentComponent,
     SafeUrlPipe
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
