@@ -7,10 +7,9 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6; /* Melhora a leitura do texto */
   color: #333; /* Cor de texto padrão para o conteúdo */
-
   /* --- Background da Onça (Imagem que você enviou) --- */
   /* Certifique-se que o caminho para a imagem esteja correto! */
-  background-image: url('assets/images/WhatsApp Image 2025-06-12 at 17.38.08 (1).jpeg');
+  background-image: url('assets/images/kaipatch.png');
   background-size: cover; /* A imagem cobre toda a área disponível, cortando se necessário */
   background-position: center center; /* Centraliza a imagem */
   background-repeat: no-repeat; /* Evita repetição */
