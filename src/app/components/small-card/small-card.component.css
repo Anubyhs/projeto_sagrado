@@ -1,8 +1,7 @@
 .container__small-card {
   max-width: 100%;
-  width: 600px;
+  width: 100%;
   margin-bottom: 0px;
-  margin-left: 20px;
   margin-top: -10px;
   display: flex;
   flex-direction: row;
@@ -21,21 +20,29 @@
   background-color: transparent;
   border-radius: 10px;
   align-items: center;
+  gap: 15px;
+}
+
+@media (max-width: 700px) {
+  .container__small-card-content {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
 }
 
 .small-card__photo > img {
-  width: 140px;
-  min-width: 130px;
   display: block;
-  margin-right: 20px;
+  width: auto;
+  max-width: 80px;
 }
 
 .small-card__text-content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 5px;
 }
 
 .small-card__title {

@@ -12,3 +12,7 @@
   list-style: none;
 }
 
+.container__menu-bar > ul > li > a {
+  pointer-events: auto;
+}
+

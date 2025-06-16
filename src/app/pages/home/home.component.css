@@ -1,3 +1,4 @@
+/* Seu CSS atual */
 html,
 body {
   margin: 0;
@@ -9,21 +10,23 @@ body {
   box-sizing: border-box;
 }
 
+/* O contêiner principal de todos os artigos */
 .container__articles {
-  margin: 130px auto 0 auto; /* Ajuste para diminuir o espaço */
-  width: 100vw;
-  padding: 0;
+  margin: 180px auto 100px auto; /* Ajuste para empurrar o conteúdo abaixo do cabeçalho e do título, e adicionar espaço para o rodapé */
+  width: 100%;
+  padding: 0 20px; /* Adicione padding horizontal para evitar que o conteúdo encoste nas bordas da tela */
   background-color: transparent;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column; /* Padrão para mobile: empilha as colunas */
+  align-items: center; /* Centraliza as colunas quando empilhadas */
   justify-content: center;
   position: relative;
   border: none;
   outline: none;
-  gap: 0px;
+  gap: 20px; /* Adiciona espaçamento entre as colunas quando empilhadas */
 }
 
+/* Pseudo-elemento, se for para background ou overlay */
 .container__articles::before {
   content: "";
   position: absolute;
@@ -31,6 +34,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  /* Defina cor ou imagem aqui se necessário */
 }
 
 .container__articles img {
@@ -39,9 +43,10 @@ body {
   display: block;
 }
 
+/* Título superior */
 app-menu-title {
   position: absolute;
-  top: 15px; /* Ajuste para subir o título */
+  top: 35px; /* Ajuste para empurrar o título para baixo sem sobrepor o conteúdo */
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -49,53 +54,38 @@ app-menu-title {
   text-align: center;
 }
 
-.articles__main {
-  width: 90%;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 5px;
-  padding: 0;
-  border: none;
-  outline: none;
-}
+/* Estilos para as colunas individuais (articles__main, articles__others, articles__main-right) */
+/* Eles devem ter larguras e alinhamentos que funcionem bem tanto no mobile quanto no desktop */
 
-.articles__main-right {
-  width: 90%;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 5px;
-  padding: 0;
-  border: none;
-  outline: none;
-}
-
+.articles__main,
+.articles__main-right,
 .articles__others {
-  width: 90%;
-  max-width: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0px;
-  padding: 0;
-  border: none;
-  outline: none;
+    width: 90%; /* Ocupa 90% da largura do pai em telas menores */
+    max-width: 600px; /* Limita a largura máxima para que não fiquem muito grandes em telas médias */
+    display: flex;
+    flex-direction: column; /* Mantém o conteúdo interno de cada coluna empilhado */
+    align-items: center; /* Centraliza o conteúdo dentro de cada coluna */
+    justify-content: flex-start; /* Alinha o conteúdo ao topo dentro de cada coluna */
+    padding: 0;
+    border: none;
+    outline: none;
+    margin-bottom: 20px; /* Espaço entre os blocos quando empilhados (mobile) */
 }
 
+/* Removido o margin-bottom: 5px; e adicionado um gap ao container__articles
+   para gerenciar o espaçamento de forma mais consistente. */
+
+
+/* Estilo da linha divisória para os small-cards */
 .small-card-divider {
   border: none;
   height: 2px;
   background-color: #800080;
-  width: 95%;
-  margin: 10px auto 10px 25px; /* Alterado de 15px para 25px na margem esquerda */
+  width: 95%; /* Linha quase total da largura do small-card */
+  margin: 10px auto; /* Centraliza horizontalmente e adiciona margem superior/inferior */
 }
 
+/* Links sociais (se estiverem em outro lugar, ajuste) */
 .articles__social-links {
   display: flex;
   justify-content: center;
@@ -118,48 +108,54 @@ app-menu-title {
   font-size: 18px;
 }
 
-@media(min-width: 700px) {
+/* Media Query para telas maiores (Desktop) */
+@media(min-width: 768px) { /* Ajustado de 700px para 768px, um breakpoint mais comum */
   .container__articles {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0px;
+    flex-direction: row; /* Coloca as colunas lado a lado no desktop */
+    align-items: flex-start; /* Alinha as colunas ao topo */
+    justify-content: center; /* Centraliza o grupo de 3 colunas */
+    gap: 30px; /* Espaço maior entre as colunas no desktop */
+    max-width: 1200px; /* Limite de largura para o layout no desktop */
+  }
+
+  .articles__main,
+  .articles__others,
+  .articles__main-right {
+    margin-bottom: 0; /* Remove a margem inferior entre colunas quando estão em linha */
+    width: auto; /* Deixa o flexbox determinar a largura com base no flex: */
+    max-width: none; /* Remove a largura máxima definida para mobile */
   }
 
   .articles__main {
-    flex: 0.8;
-    margin-bottom: 0;
-    margin-top: 0; /* Ajuste para alinhar com o novo card no desktop */
-  }
-
-  .articles__main .container__big-card {
-    padding-right: 0; /* Remove padding on the right to bring small cards closer */
+    flex: 1; /* Ocupa 1 parte do espaço flexível disponível */
+    /* text-align: left; Se quiser o texto do big-card alinhado à esquerda */
   }
 
   .articles__main-right {
-    flex: 1.5;
-    margin-bottom: 0;
-    margin-top: 0; /* Ajuste para alinhar com o outro card no desktop */
+    flex: 1; /* Ocupa 1 parte do espaço flexível disponível */
+    /* text-align: center; Se quiser o texto do big-card alinhado ao centro */
   }
 
   .articles__others {
-    flex: 1.5;
-    justify-content: flex-start;
+    flex: 1; /* Ocupa 1 parte do espaço flexível disponível */
+    justify-content: flex-start; /* Alinha os small-cards ao topo */
+    gap: 20px; /* Espaçamento entre os small-cards no desktop */
   }
 }
 
+/* Rodapé */
 .footer__container {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(to right, 
-    #0000FF,  /* Azul */
-    #4B0082,  /* Índigo */
-    #d30000,   /* Violeta/Rosa */
-    #00FF00,  /* Verde */
-    #FFFF00,  /* Amarelo */
-    #FF7F00,  /* Laranja */
-    #8b14f3   /* Vermelho */
+  background: linear-gradient(to right,
+    #0000FF,    /* Azul */
+    #4B0082,    /* Índigo */
+    #d30000,    /* Violeta/Rosa */
+    #00FF00,    /* Verde */
+    #FFFF00,    /* Amarelo */
+    #FF7F00,    /* Laranja */
+    #8b14f3    /* Vermelho */
   );
   text-align: center;
   padding: 10px 0;
@@ -177,9 +173,10 @@ app-menu-title {
   text-shadow: 1px 1px 0 #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff; /* Borda branca */
 }
 
+/* Youtube player */
 .youtube-player-container {
   width: 100%; /* Garante que o contêiner ocupa a largura disponível */
-  max-width: 800px; /* Aumentado para 800px para deixar o player mais largo */
+  max-width: 100%; /* Ajustado para 100% para responsividade em dispositivos móveis */
   margin: 20px auto; /* Centraliza o player horizontalmente e adiciona margem superior/inferior */
 }
 
@@ -188,3 +185,24 @@ app-menu-title {
   height: 200px; /* Altura ajustada para o player */
 }
 
+/* Adicionais: Ajustes para o app-big-card e app-small-card se eles não estiverem se comportando bem */
+/* Estes estilos devem estar nos arquivos CSS dos próprios componentes big-card e small-card,
+   mas um ajuste rápido para teste aqui pode ser feito, se necessário */
+
+app-big-card {
+    display: block; /* Garante que o componente se comporte como um bloco para ocupar largura total */
+    width: 100%; /* Permite que o big-card preencha a largura da sua coluna pai */
+}
+
+app-small-card {
+    display: block;
+    width: 100%; /* Permite que o small-card preencha a largura da sua coluna pai */
+}
+
+/* Se você tem um container__big-card dentro do seu big-card, pode ajustar ele */
+/* Exemplo de ajuste no big-card.component.css */
+/* .container__big-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo interno do big-card */
+/* } */
