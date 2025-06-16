@@ -1,4 +1,6 @@
 .container__big-card {
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
@@ -7,8 +9,6 @@
   background-color: transparent;
   padding: 20px;
   border-radius: 10px;
-  width: 100%;
-  max-width: 100%;
 
   @media(min-width: 700px) {
     width: 150px;
@@ -122,11 +122,10 @@
 }
 
 .big-card__photo > img{
-  width: 100%;
+  width: 60%;
   height: auto;
   display: block;
   margin: 0 auto;
-  max-width: 100%;
   @media(min-width: 700px) {
     min-width: 120px;
   }

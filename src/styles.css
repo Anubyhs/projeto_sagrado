@@ -1,249 +1,47 @@
-/* --- Global Reset and Basic Styles --- */
+/* You can add global styles to this file, and also import other style files */
 html,
 body {
-  margin: 0;
-  padding: 0;
-  /* Considere uma fonte mais adequada para o tema, como 'Roboto' ou 'Open Sans' do Google Fonts */
-  font-family: Arial, sans-serif;
-  line-height: 1.6; /* Melhora a leitura do texto */
-  color: #333; /* Cor de texto padrão para o conteúdo */
-  /* --- Background da Onça (Imagem que você enviou) --- */
-  /* Certifique-se que o caminho para a imagem esteja correto! */
-  background-image: url('assets/images/kaipatch.png');
-  background-size: cover; /* A imagem cobre toda a área disponível, cortando se necessário */
-  background-position: center center; /* Centraliza a imagem */
-  background-repeat: no-repeat; /* Evita repetição */
-  background-attachment: fixed; /* Fixa a imagem na viewport, criando um efeito de paralaxe com o scroll */
-  /* --------------------------------------------------- */
-
-  position: relative; /* Necessário para o pseudo-elemento ::before */
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden; /* Garantir que a rolagem horizontal esteja desativada */
+  overflow-y: hidden; /* Impedir rolagem vertical */
+  line-height: 1;
+  height: 100vh; /* Para garantir que o html e body ocupem toda a altura */
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Pseudo-elemento para criar um overlay sobre a imagem de fundo (opcional, para melhorar contraste) */
+html {
+  overflow-y: hidden;
+}
+
 body::before {
-  content: "";
-  position: absolute;
+  content: '';
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Overlay preto com 40% de opacidade. Ajuste o RGBA para sua necessidade. */
-  z-index: -1; /* Garante que o overlay fique abaixo do conteúdo, mas acima da imagem de fundo */
+  background-image: url('assets/images/kaipatch.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: -1;
 }
 
-/* Garante que todos os elementos considerem padding e borda em sua largura/altura */
 * {
   box-sizing: border-box;
 }
 
-/* --- Menu Título (Header Principal - "Medicina da Floresta") --- */
-app-menu-title {
-  display: block; /* Garante que o componente ocupe sua própria linha */
-  width: 100%; /* Ocupa toda a largura disponível */
-  text-align: center;
-  margin-top: 20px; /* Espaço acima do título */
-  margin-bottom: 40px; /* Espaço abaixo do título antes do conteúdo principal */
-  position: relative; /* Para que o z-index funcione corretamente sobre o overlay do body */
-  z-index: 2; /* Garante que o título apareça acima de backgrounds ou overlays */
-  /* As cores e estilos específicos do título (gradiente arco-íris, fontes) devem ser definidos no CSS do app-menu-title */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
 
-/* --- Container Principal de Artigos --- */
-.container__articles {
-  /* margin-top: 40px para dar espaço ao título acima.
-     margin-bottom: 100px para o rodapé fixo.
-     margin-left/right: auto para centralizar o contêiner. */
-  margin: 40px auto 100px auto;
-  width: 100%;
-  padding: 0 20px; /* Padding horizontal para evitar que o conteúdo cole nas bordas da tela */
-  background-color: transparent; /* Se tiver um background global, este pode ser transparente */
-  display: flex;
-  flex-direction: column; /* Padrão para mobile: empilha as colunas verticalmente */
-  align-items: center; /* Centraliza as colunas quando empilhadas */
-  justify-content: center; /* Centraliza horizontalmente o grupo de colunas */
-  position: relative; /* Necessário para pseudo-elementos ou elementos posicionados dentro */
-  border: none;
-  outline: none;
-  gap: 20px; /* Adiciona espaçamento entre as colunas quando empilhadas no mobile */
-}
-
-/* Garante que imagens dentro do container principal sejam responsivas */
-.container__articles img {
-  max-width: 100%; /* Imagem se ajusta à largura do contêiner pai */
-  height: auto; /* Mantém a proporção da imagem */
-  display: block; /* Remove espaços extras abaixo da imagem */
-}
-
-/* --- Estilos para as Colunas Individuais (Mobile-First Approach) --- */
-/* Em mobile, todas as colunas se comportam de forma semelhante, ocupando a maior parte da largura disponível */
-.articles__main,
-.articles__main-right,
-.articles__others {
-  width: 100%; /* Ocupa 100% da largura do contêiner pai */
-  max-width: 500px; /* Limita a largura máxima para que os cards não fiquem muito largos em celulares grandes/tablets verticais */
-  display: flex;
-  flex-direction: column; /* Conteúdo interno de cada coluna empilhado verticalmente */
-  align-items: center; /* Centraliza o conteúdo (texto, imagens) dentro de cada coluna */
-  justify-content: flex-start; /* Alinha o conteúdo ao topo dentro de cada coluna */
-  padding: 0;
-  border: none;
-  outline: none;
-  /* A margem inferior entre colunas é gerenciada pelo 'gap' do .container__articles */
-}
-
-/* --- Estilo da Linha Divisória para os Small Cards --- */
-.small-card-divider {
-  border: none; /* Remove a borda padrão */
-  height: 2px; /* Espessura da linha */
-  background-color: #800080; /* Cor da linha (roxo) */
-  width: 95%; /* Ocupa 95% da largura do small-card para não ir até as bordas */
-  margin: 10px auto; /* Centraliza horizontalmente e adiciona margem superior/inferior */
-}
-
-/* --- Links Sociais (Se estiverem em outro componente ou elemento relevante) --- */
-.articles__social-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  width: 100%;
-}
-
-.articles__social-links ul {
-  list-style: none; /* Remove marcadores de lista */
-  display: flex; /* Para organizar os itens da lista lado a lado */
-  gap: 20px; /* Espaçamento entre os links */
-  margin: 0;
-  padding: 0;
-}
-
-.articles__social-links ul li a {
-  color: #ffffff; /* Cor dos links */
-  text-decoration: none; /* Remove sublinhado */
-  font-size: 18px; /* Tamanho da fonte dos links */
-  /* Ajuste a cor dos ícones se eles forem fontes ou SVGs */
-}
-
-/* --- Media Query para Telas Maiores (Tablets na Horizontal e Desktops) --- */
-@media(min-width: 768px) {
-  .container__articles {
-    flex-direction: row; /* Altera para colunas lado a lado em telas maiores */
-    align-items: flex-start; /* Alinha as colunas ao topo */
-    justify-content: center; /* Centraliza o grupo de 3 colunas na horizontal */
-    gap: 30px; /* Espaço maior entre as colunas no desktop */
-    max-width: 1200px; /* Limite de largura para o layout no desktop */
-    margin-top: 60px; /* Ajuste a margem superior para o desktop, se necessário */
-  }
-
-  /* Redefine larguras e margens para as colunas no layout de desktop */
-  .articles__main,
-  .articles__main-right,
-  .articles__others {
-    width: auto; /* Deixa o flexbox determinar a largura */
-    max-width: none; /* Remove a largura máxima definida para mobile */
-    margin-bottom: 0; /* Remove a margem inferior entre colunas, já que agora estão lado a lado */
-  }
-
-  /* Define as proporções das colunas para o layout de três colunas no desktop */
-  .articles__main {
-    flex: 2; /* Esta será a coluna maior da esquerda (A MEDICINA DA FLORESTA) */
-    max-width: 600px; /* Limita a largura para que não fique absurdamente grande */
-  }
-
-  .articles__others {
-    flex: 1; /* Esta será a coluna dos Small Cards (do meio ou direita) */
-    /* Garante que os small-cards permaneçam empilhados verticalmente dentro desta coluna */
-    flex-direction: column;
-    gap: 20px; /* Espaçamento entre os small-cards */
-    max-width: 350px; /* Limite para a largura da coluna de small cards */
-  }
-
-  .articles__main-right {
-    flex: 1; /* Esta será a coluna do vídeo (NA FORÇA DA SAGRADA MEDICINA) */
-    max-width: 350px; /* Limite para a largura da coluna do vídeo */
-  }
-}
-
-/* --- Rodapé --- */
-.footer__container {
-  position: fixed; /* Fixo na tela */
-  bottom: 0; /* Alinhado à parte inferior */
-  width: 100%; /* Ocupa toda a largura */
-  background: linear-gradient(to right,
-  #0000FF,    /* Azul */
-  #4B0082,    /* Índigo */
-  #d30000,    /* Violeta/Rosa */
-  #00FF00,    /* Verde */
-  #FFFF00,    /* Amarelo */
-  #FF7F00,    /* Laranja */
-  #8b14f3    /* Vermelho */
-  );
-  text-align: center;
-  padding: 10px 0;
-  z-index: 1000; /* Garante que ele fique acima de outros elementos */
-  /* Ajuste para legibilidade do texto com borda fina */
-  -webkit-text-stroke: 0.5px #ffffff; /* Borda fina branca (para navegadores Webkit) */
-  text-stroke: 0.5px #ffffff; /* Borda fina branca (padrão) */
-}
-
-.footer__container p {
-  margin: 0; /* Remove margem padrão do parágrafo */
-  font-size: 15.4px;
-  color: #800080; /* Cor principal do texto (roxo) */
-  font-weight: bold;
-  background: none; /* Garante que não haja background estranho no texto */
-  -webkit-background-clip: unset;
-  background-clip: unset;
-  text-shadow: none; /* Remove a sombra complexa para usar text-stroke */
-}
-
-/* --- YouTube Player (CRUCIAL para Responsividade de Vídeos) --- */
-/* Aplica esta técnica ao contêiner que envolve o iframe do YouTube */
-.youtube-player-container {
-  position: relative; /* Necessário para posicionar o iframe internamente */
-  width: 100%; /* Ocupa 100% da largura do seu contêiner pai */
-  /* Técnica para manter a proporção 16:9 (altura / largura * 100).
-     Para 4:3, use 75%. Para outros, calcule. */
-  padding-bottom: 56.25%; /* (9 / 16) * 100 = 56.25% */
-  height: 0; /* A altura é controlada pelo padding-bottom */
-  overflow: hidden; /* Esconde qualquer transbordamento */
-  margin: 20px auto; /* Centraliza o player e adiciona margem */
-  background-color: #000; /* Fundo preto para o player antes de carregar ou se houver problemas */
-  border-radius: 8px; /* Opcional: Adiciona bordas arredondadas ao player */
-}
-
-.youtube-player-container iframe {
-  position: absolute; /* Posiciona o iframe dentro do contêiner */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0; /* Remove a borda padrão do iframe */
-}
-
-/* --- Estilos para Componentes Personalizados (Ajustes de Bloco) --- */
-/* Esses estilos são importantes para garantir que os componentes se ajustem corretamente.
-   O ideal é que estilos específicos de layout interno de cada card estejam no CSS do próprio componente. */
-
-app-big-card {
-  display: block; /* Garante que o componente se comporte como um bloco */
-  width: 100%; /* Permite que ele preencha a largura da sua coluna pai */
-  /* Exemplo: Se o conteúdo interno do big-card precisar ser flexível, adicione: */
-  /* .container__big-card { display: flex; flex-direction: column; align-items: center; } */
-}
-
-app-small-card {
-  display: block; /* Garante que o componente se comporte como um bloco */
-  width: 100%; /* Permite que ele preencha a largura da sua coluna pai */
-  /* Exemplo: Se o conteúdo interno do small-card precisar ser flexível, adicione: */
-  /* .container__small-card { display: flex; flex-direction: column; align-items: center; } */
-}
-
-/* Estilos para a imagem dentro do big-card (se não for o vídeo) */
-/* Este estilo é para a imagem dentro do div.big-card__photo em big-card.component.html */
-.big-card__photo img {
-  max-width: 100%;
-  height: auto; /* Remove o height fixo e deixa a imagem se ajustar proporcionalmente */
-  display: block;
-  border-radius: 8px; /* Opcional: Borda arredondada para a imagem */
+a{
+  text-decoration: none;
 }
