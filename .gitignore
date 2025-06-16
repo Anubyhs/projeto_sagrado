@@ -1,0 +1,11 @@
+# Node modules
+/node_modules
+
+# Angular build output
+/dist
+
+# Angular cache directory
+/.angular/cache
+
+# Miscellaneous
+.DS_Store 
